@@ -3,6 +3,7 @@ import cors from 'cors';
 import { sensorRouter } from './src/routes/sensor.routes.js';
 import { prologService } from './src/services/prologService.js';
 import { productoRouter } from './src/routes/productos.routes.js';
+import { contenedorRouter } from './src/routes/contenedor.routes.js';
 
 // Inicializar Express
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 // Rutas
 app.use('/api', sensorRouter)
 app.use('/api/productos', productoRouter);
+app.use('/api/contenedor', contenedorRouter)
 
 // Arrancar servidor
 app.listen(PORT, async() => {
