@@ -1,14 +1,14 @@
 import pool from "../config/db.js";
 
 export class contenedorModel {
-    static async crear({ nombre, peso, imagen }) {
+    static async crear({ nombre, peso, imagen, capacidadGr }) {
         try {
             const { rows } = await pool.query(
                 `INSERT INTO 
-                contenedores (nombre, peso, imagen)
-                VALUES ($1, $2, $3)
+                contenedores (nombre, peso, imagen, capacidad_gr)
+                VALUES ($1, $2, $3, $4)
                 RETURNING id`,
-                [nombre, peso, imagen]
+                [nombre, peso, imagen, capacidadGr]
             );
 
             if (rows.length < 0) return { success: false }
